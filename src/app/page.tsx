@@ -6,6 +6,7 @@ type AppData = {
   id: string;
   name: string;
   logo: string;
+  logoSize?: number;
   url: string;
   info: string;
 };
@@ -14,28 +15,31 @@ const apps: AppData[] = [
   {
     id: "pipeline",
     name: "Pipeline",
-    logo: "P",
+    logo: "/Pipeline Logo main.png",
     url: "https://pipeline.mtapps.live",
     info: "Top to bottom funnel for VCs.",
   },
   {
     id: "followr",
     name: "Followr",
-    logo: "F",
+    logo: "/followr_black_nobg.png",
+    logoSize: 110,
     url: "https://followr.mtapps.live",
     info: "Automate your follow-ups and build stronger relationships with your network.",
   },
   {
     id: "dealseek",
     name: "Dealseek",
-    logo: "D",
+    logo: "/Dealseek.png",
+    logoSize: 110,
     url: "https://dealseek.mtapps.live",
     info: "Discover, analyze, and secure the best deals in your industry.",
   },
   {
     id: "nodify",
     name: "Nodify",
-    logo: "N",
+    logo: "/Nodify Logo New.png",
+    logoSize: 110,
     url: "https://nodify.mtapps.live",
     info: "Leverage the networks of people within your organization.",
   }
@@ -98,7 +102,15 @@ export default function Home() {
               rel="noopener noreferrer"
               className="app-card"
             >
-              <div className="app-logo">{app.logo}</div>
+              <div className="app-logo">
+                <Image
+                  src={app.logo}
+                  alt={`${app.name} logo`}
+                  width={app.logoSize ?? 80}
+                  height={app.logoSize ?? 80}
+                  style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
+                />
+              </div>
               <h2 className="app-name">{app.name}</h2>
               <p className="app-info">{app.info}</p>
             </a>
